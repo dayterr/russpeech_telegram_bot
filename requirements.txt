@@ -11,6 +11,5 @@ python-dotenv==0.17.1
 requests==2.25.1
 six==1.16.0
 soupsieve==2.2.1
-telebot==0.0.4
 urllib3==1.26.4
 virtualenv==20.4.7
