@@ -5,7 +5,7 @@ import telebot
 from bs4 import BeautifulSoup
 import urllib.parse
 
-TOKEN = ''
+TOKEN = '1862922993:AAFSX9gFBXA2TRjrzEM61a6EgKkd4uxHMVU'
 URL = 'http://russpeech.spbu.ru/search/trn-search.php?wf='
 
 bot = telebot.TeleBot(TOKEN)
@@ -69,4 +69,4 @@ def return_search(message):
     send_results(message)
 
 
-bot.polling(none_stop=True, interval=0)
+bot.infinity_polling()
