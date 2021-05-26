@@ -38,8 +38,7 @@ def send_results(message):
         msg = 'По заданному запросу результатов не найдено.'
         if len(words) > 1:
             msg += f'\nВыполнить поиск для "{words[0]}"? /confirm – выполнить поиск'
-            global first_word
-            first_word = words[0]
+            message.text = words[0]
             global message_cache
             message_cache = message
         bot.send_message(message.chat.id, msg)
@@ -70,7 +69,7 @@ def return_long_results(message):
 
 
 @bot.message_handler(commands=['confirm'])
-def get_first_word_results():
+def get_first_word_results(message):
     search(message_cache.text.lower())
     send_results(message_cache)
 
