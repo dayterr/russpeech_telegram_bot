@@ -1,11 +1,9 @@
-import os
 import requests
-from dotenv import load_dotenv
 import telebot
 from bs4 import BeautifulSoup
 import urllib.parse
 
-TOKEN = '1862922993:AAFSX9gFBXA2TRjrzEM61a6EgKkd4uxHMVU'
+TOKEN = ''
 URL = 'http://russpeech.spbu.ru/search/trn-search.php?wf='
 
 bot = telebot.TeleBot(TOKEN)
