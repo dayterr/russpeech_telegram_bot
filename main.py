@@ -11,6 +11,8 @@ URL = 'http://russpeech.spbu.ru/search/trn-search.php?wf='
 bot = telebot.TeleBot(TOKEN)
 
 results_cache = []
+message_cache = ''
+first_word = ''
 
 
 def get_string(list_to_str):
@@ -36,6 +38,10 @@ def send_results(message):
         msg = 'По заданному запросу результатов не найдено.'
         if len(words) > 1:
             msg += f'\nВыполнить поиск для "{words[0]}"?'
+            global first_word
+            first_word = words[0]
+            global message_cache
+            message_cache = message
         bot.send_message(message.chat.id, msg)
     elif amount > 5:
         msg = f'По Вашему запросу найдено {amount} результатов. /yes – распечатать все'
@@ -61,6 +67,12 @@ def return_long_results(message):
         msg = f'Результаты с {beg} по {end}\n\n'
         msg += get_string(results_cache[i:i + 5])
         bot.send_message(message.chat.id, msg)
+
+
+@bot.message_handler(commands=['confirm'])
+def get_first_word_results():
+    search(message_cache.text.lower())
+    send_results(message_cache)
 
 
 @bot.message_handler(func=lambda m: True)
