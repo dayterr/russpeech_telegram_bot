@@ -37,7 +37,7 @@ def send_results(message):
     if amount == 0:
         msg = 'По заданному запросу результатов не найдено.'
         if len(words) > 1:
-            msg += f'\nВыполнить поиск для "{words[0]}"?'
+            msg += f'\nВыполнить поиск для "{words[0]}"? /confirm – выполнить поиск'
             global first_word
             first_word = words[0]
             global message_cache
